@@ -1,5 +1,12 @@
 
 var currentPosition ={lat:0, lng:0}
+
+
+$('#main').on( "pagebeforeshow", function( event, ui ) {
+  // alert( "This page was just hidden: " + ui.prevPage );
+});
+
+
 jQuery(document).ready(function() {
   
   venue_latlng = [36.1509, -95.9464];
@@ -9,7 +16,7 @@ jQuery(document).ready(function() {
   //satellite
   // map = L.mapbox.map('my_arbitrary_id', 'jdungan.map-y7hj3ir7').setView(venue_latlng,16);
   //200OK
-  map = L.mapbox.map('my_arbitrary_id', 'username44.hbhcfpoe').setView(venue_latlng,16);
+  map = L.mapbox.map('map', 'username44.hbhcfpoe').setView(venue_latlng,16);
 
   var distWatchID,
       posOptions = {enableHighAccuracy: true},
@@ -79,6 +86,7 @@ jQuery(document).ready(function() {
 		
 	  distWatchID = navigator.geolocation.watchPosition(new_position, appPosFail, posOptions);       
 
+    map.invalidateSize()
 
 });
   
